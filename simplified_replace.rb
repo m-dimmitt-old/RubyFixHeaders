@@ -2,12 +2,12 @@
 
 
 def write_to_end
-  File.open("Readme2.md", "a+") do |f|
+  File.open("test.md", "a+") do |f|
     f.write("hello333\n");
   end
 end
 def write_to_all        # this will start at the beginning go through each line and replace.
-  File.open("Readme2.md", "r+") do |f|
+  File.open("test.md", "r+") do |f|
   f.write("qqqqq") #replaces that line.
     f.each do |line|
     f.write("qqqqq") #replaces that line.
@@ -16,7 +16,7 @@ def write_to_all        # this will start at the beginning go through each line 
 end
 
 def testsd
-File.open("Readme2.md", "r+") do |f|
+File.open("test.md", "r+") do |f|
     f.each do |line|
   puts "position 1 #{f.pos}"
     i = 1;
@@ -50,7 +50,7 @@ start = f.gets(1)
 end
 
 def puts_all        # this will start at the beginning go through each line and replace.
-  File.open("Readme2.md", "r+") do |f|
+  File.open("test.md", "r+") do |f|
   #puts(f.gets(1));
   old_pos = 0
   i = 1;
@@ -60,13 +60,13 @@ def puts_all        # this will start at the beginning go through each line and 
   end
 end
 def write_to_beginning # this will start at the beginning go through each line and replace.
-  File.open("Readme2.md", "r+") do |f|
+  File.open("test.md", "r+") do |f|
       f.write("pppp") #replaces that line.
   end
 end
 
 def write_to_pos_all_lines #complete
-  File.open("Readme2.md", "r+") do |f|
+  File.open("test.md", "r+") do |f|
   f.pos = 3
   f.write("robertTHeDOIG") #replaces that line.
     f.each do |line|
@@ -78,7 +78,7 @@ def write_to_pos_all_lines #complete
 end
 
 def write_to_line #
-  File.open("Readme2.md", "r+") do |f|
+  File.open("test.md", "r+") do |f|
       old_pos = 0
       f.each do |line|
         f.pos = old_pos   # this is the 'rewind'

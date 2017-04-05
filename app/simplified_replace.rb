@@ -43,7 +43,7 @@ text_decision = {"\n" => "Newline was First Character", "\s" => "Space was First
   end
 end
 def check_for_space(f)
-=begin
+
   track = f.pos
   f.pos = track -1
   if(f.getc != "\s")
@@ -53,11 +53,15 @@ def check_for_space(f)
     strin2 = " #{strin}" #adds a space.    #then concatenate space to beginning.
     f.pos = track - 1
     f.write(strin2)
-=end
+  end
 end
 
 def tested
   File.open("app/test.md", "r+") do |f|
+    curr_char = f.gets(1)
+    if(handle_char(curr_char, f))
+      check_for_space(f)
+    end
     f.each do |line|
       puts "position 1 #{f.pos}"
       i = 1;
@@ -72,4 +76,5 @@ def tested
   end
 end
 
+tested
 tested

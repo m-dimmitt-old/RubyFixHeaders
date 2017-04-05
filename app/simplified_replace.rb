@@ -22,28 +22,51 @@
       end
     end
 =end
-def handlestart(start)
+def handle_char(curr_char, f)
 text_decision = {"\n" => "Newline was First Character", "\s" => "Space was First Character", "#" => "Hash was First Character"}
-      if(text_decision.key?("#{start}"))
-	#textdecision.each {|key,value| do_something(start, aChar) if
-      	#if(start == aChar)
-        puts text_decision["#{start}"]
-	#start = f.gets(1)
+  if(text_decision.key?("#{curr_char}"))
+    puts text_decision["#{curr_char}"]
 
-#	handlestart(start, aChar)
-      end
+    value = f.gets(1)
+    while(value == "#{curr_char}")
+      value = f.gets(1)
+    end
+    if(curr_char == "#")
+      return true;
+    else
+    handle_char(value, f)#recur, iterating through until ... hash fails.
+    end
+    #start = f.gets(1)
+    #	handlestart(start, aChar)
+  else
+    return false
+  end
 end
+def check_for_space(f)
+=begin
+  track = f.pos
+  f.pos = track -1
+  if(f.getc != "\s")
+    print true  #not a space      #add a space...
+    f.pos = track -1
+    strin = f.gets
+    strin2 = " #{strin}" #adds a space.    #then concatenate space to beginning.
+    f.pos = track - 1
+    f.write(strin2)
+=end
+end
+
 def tested
-File.open("test.md", "r+") do |f|
+  File.open("app/test.md", "r+") do |f|
     f.each do |line|
       puts "position 1 #{f.pos}"
       i = 1;
-      start = f.gets(1)
-
-      handlestart(start)
-#      handlestart(start, "\n")
-#      handlestart(start, "\s")
-#      handlestart(start, "#")
+      curr_char = f.gets(1)
+      if(handle_char(curr_char, f))
+        check_for_space(f)
+      else
+        #nothing
+      end
       puts "position 2 #{f.pos}"
     end
   end

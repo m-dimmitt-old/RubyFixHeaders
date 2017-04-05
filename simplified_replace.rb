@@ -1,20 +1,7 @@
 #!/usr/bin/env ruby
 
-def write_to_end
-  File.open("test.md", "a+") do |f|
-    f.write("hello333\n");
-  end
-end
 
-def write_to_all        # this will start at the beginning go through each line and replace.
-  File.open("test.md", "r+") do |f|
-  f.write("qqqqq") #replaces that line.
-    f.each do |line|
-    f.write("qqqqq") #replaces that line.
-   end
-  end
-end
-=begin      
+=begin
       if(start == "\s")
         puts "Space was First Character"
       end
@@ -39,11 +26,11 @@ end
 def handlestart(start)
 text_decision = {"\n" => "Newline was First Character", "\s" => "Space was First Character", "#" => "Hash was First Character"}
       if(text_decision.key?("#{start}"))
-	#textdecision.each {|key,value| do_something(start, aChar) if 
+	#textdecision.each {|key,value| do_something(start, aChar) if
       	#if(start == aChar)
         puts text_decision["#{start}"]
 	#start = f.gets(1)
-	
+
 #	handlestart(start, aChar)
       end
 end
@@ -54,7 +41,7 @@ File.open("test.md", "r+") do |f|
       i = 1;
       start = f.gets(1)
 
-      handlestart(start)      
+      handlestart(start)
 #      handlestart(start, "\n")
 #      handlestart(start, "\s")
 #      handlestart(start, "#")
@@ -63,19 +50,26 @@ File.open("test.md", "r+") do |f|
   end
 end
 
-def puts_all        # this will start at the beginning go through each line and replace.
-  File.open("test.md", "r+") do |f|
-  #puts(f.gets(1));
-  old_pos = 0
-  i = 1;
-    f.each do |line|
-      f.write("hello") #replaces that line.
-      end
-  end
-end
+
+
+
 def write_to_beginning # this will start at the beginning go through each line and replace.
   File.open("test.md", "r+") do |f|
       f.write("pppp") #replaces that line.
+  end
+end
+def write_to_end
+  File.open("test.md", "a+") do |f|
+    f.write("hello333\n");
+  end
+end
+
+def write_to_all        # this will start at the beginning go through each line and replace.
+  File.open("test.md", "r+") do |f|
+  f.write("qqqqq") #replaces that line.
+    f.each do |line|
+    f.write("qqqqq") #replaces that line.
+   end
   end
 end
 
@@ -84,23 +78,22 @@ def write_to_pos_all_lines #complete
   f.pos = 3
   f.write("robertTHeDOIG") #replaces that line.
     f.each do |line|
-#        line.pos = 3
        f.pos += 2
        f.write("robertTHeDOIG") #replaces that line.
    end
   end
 end
 
-def write_to_line #
+def write_to_line #would use a count ... starting at 1. and incrementing in the f.each
   File.open("test.md", "r+") do |f|
-      old_pos = 0
+      line_count = 1
       f.each do |line|
         f.pos = old_pos   # this is the 'rewind'
-        if(f.pos == 3)
+          line_count += 1
+        if(line_count == 4)
+          f.pos += 2
           f.write("robertTHeDOIG")
-          old_pos +=1
         end
-          old_pos +=1
       end
       f.write("hi")
   end

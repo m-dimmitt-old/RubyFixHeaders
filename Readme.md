@@ -1,5 +1,9 @@
 https://www.tutorialspoint.com/ruby/ruby_input_output.htm
 
+## Implement the Program
+<pre>
+rake app/simplified_replace.rb
+</pre>
 <pre>
 how to edit text file in any language.
 check the file class.

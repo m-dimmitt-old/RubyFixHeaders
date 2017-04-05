@@ -15,34 +15,34 @@ def write_to_all        # this will start at the beginning go through each line 
   end
 end
 
-def testsd
+def tested
 File.open("test.md", "r+") do |f|
     f.each do |line|
-  puts "position 1 #{f.pos}"
-    i = 1;
-
-start = f.gets(1)
-    if(start == "#")
-      while(f.gets(1) == "#")
-        puts "success"
+      puts "position 1 #{f.pos}"
+      i = 1;
+      start = f.gets(1)
+      if(start == "\n")
+        puts "Newline was First Character"
       end
+      if(start == "\s")
+        puts "Space was First Character"
+      end
+      if(start == "#")
+        while(f.gets(1) == "#")
+          puts "success"
+        end
       track = f.pos
       f.pos = track -1
       if(f.getc != "\s")
-        print true  #not a space
+        print true  #not a space      #add a space...
         f.pos = track -1
         strin = f.gets
-        strin2 = " #{strin}" #adds a space.
+        strin2 = " #{strin}" #adds a space.    #then concatenate space to beginning.
         f.pos = track - 1
         f.write(strin2)
       else
         print false # a space
       end
-      #add a space...
-       #and now we are in the spot.
-       # if no space add a space
-   #read first
-   #then concatenate space to beginning.
     end
       puts "position 2 #{f.pos}"
     end
@@ -96,6 +96,6 @@ end
 # write_to_end
 #write_to_pos_all_lines
 #puts_all
-testsd
+tested
 #puts_all
 # write_to_beginning

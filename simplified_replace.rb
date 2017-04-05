@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 
-
 def write_to_end
   File.open("test.md", "a+") do |f|
     f.write("hello333\n");
   end
 end
+
 def write_to_all        # this will start at the beginning go through each line and replace.
   File.open("test.md", "r+") do |f|
   f.write("qqqqq") #replaces that line.
@@ -14,16 +14,7 @@ def write_to_all        # this will start at the beginning go through each line 
    end
   end
 end
-
-def tested
-File.open("test.md", "r+") do |f|
-    f.each do |line|
-      puts "position 1 #{f.pos}"
-      i = 1;
-      start = f.gets(1)
-      if(start == "\n")
-        puts "Newline was First Character"
-      end
+=begin      
       if(start == "\s")
         puts "Space was First Character"
       end
@@ -44,6 +35,29 @@ File.open("test.md", "r+") do |f|
         print false # a space
       end
     end
+=end
+def handlestart(start)
+text_decision = {"\n" => "Newline was First Character", "\s" => "Space was First Character", "#" => "Hash was First Character"}
+      if(text_decision.key?("#{start}"))
+	#textdecision.each {|key,value| do_something(start, aChar) if 
+      	#if(start == aChar)
+        puts text_decision["#{start}"]
+	#start = f.gets(1)
+	
+#	handlestart(start, aChar)
+      end
+end
+def tested
+File.open("test.md", "r+") do |f|
+    f.each do |line|
+      puts "position 1 #{f.pos}"
+      i = 1;
+      start = f.gets(1)
+
+      handlestart(start)      
+#      handlestart(start, "\n")
+#      handlestart(start, "\s")
+#      handlestart(start, "#")
       puts "position 2 #{f.pos}"
     end
   end

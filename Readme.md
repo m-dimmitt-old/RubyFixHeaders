@@ -36,3 +36,18 @@ write to beginning... many lines or one.
 </pre>
 
 
+# Bot-Fix-Headers-of-Accounts-Organizations
+Github recently changed markdown strictness ... this will soon fix that.
+
+build notes, (2 ways)
+1) web scraping using my logged account.
+2) creating fork ... cloning ... making changes and pushing. 
+via account through api.
+ 
+
+## commit message
+fix headers in README.md;
+
+## comment
+Github recently changed markdown strictness; 
+the series of #'s that make a header require a space before header name.
